@@ -35,7 +35,7 @@ from sensor_msgs.msg import JointState
 
 def fake_mir_joint_publisher():
     rospy.init_node('fake_mir_joint_publisher')
-    prefix = rospy.get_param('~prefix', '')
+    prefix = rospy.get_param('~tf_prefix', '')
     pub = rospy.Publisher('joint_states', JointState, queue_size=10)
     r = rospy.Rate(50.0)
     while not rospy.is_shutdown():

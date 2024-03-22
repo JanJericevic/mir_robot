@@ -7,11 +7,12 @@
 
   <arg name="disable_map" default="false" doc="Disable the map topic and map -> odom TF transform from the MiR" />
 
-  <param name="tf_prefix" type="string" value="$(arg tf_prefix)"/>
+  <!-- <param name="tf_prefix" type="string" value="$(arg tf_prefix)"/> -->
 
   <!-- URDF -->
   <include file="$(find mir_description)/launch/upload_mir_urdf.launch">
     <arg name="mir_type" value="$(arg mir_type)" />
+    <arg name="tf_prefix" value="$(arg tf_prefix)" />
   </include>
 
   <!-- Robot state publisher -->
@@ -59,6 +60,7 @@
       </rosparam>
     </node>
   </group>
+
   <group unless="$(arg disable_map)">
     <node name="mir_bridge" pkg="mir_driver" type="mir_bridge.py" output="screen">
       <param name="hostname" value="$(arg mir_hostname)" />
@@ -81,5 +83,7 @@
     <remap from="scan_filtered" to="f_scan_rep117" />
   </node>
 
-  <node name="fake_mir_joint_publisher" pkg="mir_driver" type="fake_mir_joint_publisher.py" output="screen" />
+  <node name="fake_mir_joint_publisher" pkg="mir_driver" type="fake_mir_joint_publisher.py" output="screen">
+    <param name="tf_prefix" value="$(arg tf_prefix)" />
+  </node>
 </launch>
