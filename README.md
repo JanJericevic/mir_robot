@@ -1,4 +1,4 @@
-This is a fork of the ROS driver for MiR robots. Follow [this link](https://github.com/DFKI-NI/mir_robot) to the original repo.
+This is a fork of the ROS driver for MiR robots. Follow [this link](https://github.com/DFKI-NI/mir_robot) to the original repo.  
 Changes made here were made for use with the MiR100 robot.
 
 
